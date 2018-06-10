@@ -1,0 +1,226 @@
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border-radius: 0;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #fff;
+}
+.clearFix:after {
+	clear: both;
+	display: block;
+	content: "";
+}
+.clearFix {
+	zoom: 1;
+}
+#bar {
+	height: 130px;
+	width: 100%;
+	color: #fff;
+}
+
+#topbar {
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+	min-width: 900px;
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+	background: #fafafa;
+}
+.logo {
+	float: left;
+	margin-left: 30px;
+	color: #000;
+}
+.logo a {
+	display: block;
+	float: left;
+	overflow: hidden;
+	width: 100px;
+	height: 0;
+	padding-top: 90px;
+	background: url(../img/logo.png);
+	background-size: 100%;
+}
+.topbarNav {
+	float: right;
+	margin-right: 100px;
+}
+.topbarNav a {
+	margin-left: 14px;
+	text-decoration: none;
+	font-size: 18px;
+	font-weight: bold;
+	color: #000;
+} 
+.topbarNav a:hover {
+	padding-bottom: 14px;
+	border-bottom: 3px solid #de0000;
+	color: #de0000;
+}
+.wrap {
+	width: 900px;
+	margin: 0 auto;
+	padding-top:100px; 
+	color: #000;
+}
+.caption {
+	position: relative;
+	height: 100px;
+	line-height: 100px;
+
+}
+.caption input,
+.caption select {
+	padding: 10px 0 10px 10px;
+	margin-left: 8px;
+	border: 1px solid #eee;
+	border-radius: 10px;
+}
+.capTitle {
+	float: left;
+}
+.capSelet {
+	position: absolute;
+	right: 0;
+}
+
+.container {
+	display: relative;
+	overflow: hidden;
+	min-height: 400px;
+}
+.container .toolbar {
+	display: absolute;
+	z-index: 9999;
+}
+.toolbar {
+	height: 50px;
+	line-height: 50px;
+	border: 1px solid #eee;
+}
+.toolbar button {
+	width: 15px;
+	height: 15px;
+	margin-left: 8px;
+	border: 0;
+	/* background: url(../img/bold.png); */
+	background-size: 15px;
+}
+.toolbar1 {
+	background: url(../img/bold.png);
+}
+.toolbar2 {
+	background: url(../img/italic.png);
+}
+.toolbar3 {
+	background: url(../img/title.png);
+}
+.toolbar4 {
+	background: url(../img/underline.png);
+}
+.toolbar5 {
+	background: url(../img/middleline.png);
+}
+.toolbar6 {
+	background: url(../img/pick.png);
+}
+.toolbar7 {
+	background: url(../img/uper.png);
+}
+.toolbar8 {
+	background: url(../img/lower.png);
+}
+.toolbar9 {
+	background: url(../img/inleft.png);
+}
+.toolbar10 {
+	background: url(../img/incenter.png);
+}
+.toolbar11 {
+	background: url(../img/inright.png);
+}
+.toolbar12 {
+	background: url(../img/plink.png);
+}
+.toolbar13 {
+	background: url(../img/rule.png);
+}
+.toolbar14 {
+	background: url(../img/unlure.png);
+}
+.toolbar15 {
+	background: url(../img/link.png);
+}
+.toolbar16 {
+	background: url(../img/image.png);
+}
+.toolbar17 {
+	background: url(../img/code.png);
+}
+.toolbar18 {
+	background: url(../img/table.png);
+}
+.toolbar19 {
+	background: url(../img/prev.png);
+}
+.toolbar20 {
+	background: url(../img/next.png);
+}
+.toolbar21 {
+	background: url(../img/delect.png);
+}
+.toolbar22 {
+	background: url(../img/save.png);
+}
+
+
+
+.column-left,
+.column-right,
+.column-left textarea {
+	display: block;	
+	overflow: auto;
+	/* width: 48%; */
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+}
+.column-left {
+	float: left;
+	width: 48%;
+    border: 1px solid #eee;
+}
+.column-right {
+	float: right;
+	width: 48%;
+    background: #c3bdbd;
+}
+
+.column-left textarea {
+	width: 100%;
+	height: 100%;
+}
+#commit {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+}
+label {
+	float: right;
+	display: inline-block;
+	line-height: 20px;
+	margin-top: 20px;
+	margin-bottom:20px; 
+	padding: 10px 20px;
+	border-radius: 8px;
+	background: #de0000;
+	cursor: pointer;
+}

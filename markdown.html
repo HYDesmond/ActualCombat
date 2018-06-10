@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>markdown编辑器</title>
+		<link rel="stylesheet" href="./css/css.css">
+		<script src="./js/jquery-1.9.0.min.js"></script>
+	</head>
+
+	<body>
+		<div id='bar'>
+			<div id="topbar" class="clearFix">
+				<h1 class="logo"><a href="">123</a><span>猿计划</span></h1>
+				<nav class="topbarNav">
+					<a href="javascript:;">未读消息</a>
+					<a href="javascript:;">首页</a>
+					<a href="javascript:;">知识体系</a>
+					<a href="javascript:;">活动中心</a>
+					<a href="javascript:;">文章</a>
+					<a href="javascript:;">写文章</a>
+				</nav>
+			</div>
+			<article class="wrap clearFix">
+				<div class="caption">
+					<div class="capTitle">
+						<span>文章标题</span>
+						<input type="text" placeholder="文章标题">
+					</div>
+					<div class="capSelet">
+						<span>所属分类</span>
+						<select id="group">
+							<option value="volvo">经验分享</option>
+							<option value="saab">入门学习</option>
+							<option value="opel">成果分享</option>
+						</select>
+						<span>技术分类</span>
+						<select id="telgroup">
+							<option value="volvo">HTML</option>
+							<option value="saab">PHP</option>
+							<option value="opel">JAVA</option>
+						</select>
+					</div>
+				</div>
+				<div class="container">
+					<div class="toolbar">
+						<button type="button" title="粗体(ctrl+b)" class="toolbar1"></button>
+						<button type="button" title="斜体(ctrl+i)" class="toolbar2"></button>
+						<button type="button" title="标题(ctrl+h)" class="toolbar3"></button>
+						<button type="button" title="下划线(ctrl+u)" class="toolbar4"></button>
+						<button type="button" title="中划线(ctrl+d)" class="toolbar5"></button>
+						<button type="button" title="标记(ctrl+m)" class="toolbar6"></button>
+						<button type="button" title="上角标(ctrl+shift+=)" class="toolbar7"></button>
+						<button type="button" title="下角标(ctrl+=)" class="toolbar8"></button>
+						<button type="button" title="居左(ctrl+l)" class="toolbar9"></button>
+						<button type="button" title="居中(ctrl+e)" class="toolbar10"></button>
+						<button type="button" title="居右(ctrl+r)" class="toolbar11"></button>
+						<button type="button" title="段落引用(ctrl+q)" class="toolbar12"></button>
+						<button type="button" title="有序列表(ctrl+o)" class="toolbar13"></button>
+						<button type="button" title="无序列表(ctrl+alt+u)" class="toolbar14"></button>
+						<button type="button" title="链接(ctrl+l)" class="toolbar15"></button>
+						<button type="button" title="图片(ctrl+alt+l)" class="toolbar16"></button>
+						<button type="button" title="代码块(ctrl+alt+c)" class="toolbar17"></button>
+						<button type="button" title="表格(ctrl+alt+t)" class="toolbar18"></button>
+						<button type="button" title="上一步(ctrl+z)" class="toolbar19"></button>
+						<button type="button" title="下一步(ctrl+y)" class="toolbar20"></button>
+						<button type="button" title="清空(ctrl+breakspace)" class="toolbar21"></button>
+						<button type="button" title="保存(ctrl+s)" class="toolbar22"></button>
+					</div>
+					<!--编辑区-->
+					<div id="colLeft" class="column-left">
+					    <textarea name="markdown" id="inputText" style="resize:none" ></textarea>
+					</div>
+					<!--显示区-->
+					<div id="colRight" class="column-right">
+					</div>
+				</div>
+				<label for="commit">发布</label>
+				<button id="commit"></button>
+			</article>
+			<script src="js/jquery-1.9.0.min.js"></script>
+			<script src="js/jquery.md5.js"></script>
+			<script src="js/marked.js"></script>
+			<script>
+				<!---->
+				//简单的markdown操作
+				document.onkeyup = DivFollowingText;
+				function DivFollowingText () {
+					var oTextarea = document.getElementById('inputText');
+
+				document.getElementById('colRight').innerHTML = marked(oTextarea.value);
+      			console.log(oTextarea.value)
+				}
+				<!---->
+
+				<!---->
+				//提交数据
+				var oResult = $('#colRight');
+	            
+	            var myRandom =  Math.round(Math.random()*10);
+
+            	function getSignure(obj) {
+	                var keyArr = [];
+	                var keySortArr = []
+	                $.each(obj, function (key, val) {
+	                    keyArr.push(key)
+	                })
+	                keySortArr = keyArr.sort();
+	                var objArr = [];
+	                for (var i = 0; i < keySortArr.length; i++) {
+	                    objArr.push(keySortArr[i] + '=' + obj[keySortArr[i]])
+	                }
+	                console.log($.md5(objArr.join('&')).substring(0, 20));
+	                return ($.md5(objArr.join('&')).substring(0, 20));
+            	}
+
+	            $('#commit').click(function() {
+		            str = $.ajax({
+		                type: 'post', //请求类型
+		                url: 'http://vue.tyqprivateweb.cn:35002/vue/article.php',//请求地址：
+		                data: {
+		                    'userId': 'ff723c50-6706-11e8-9953-acc9e830357',
+		                    'name': '123',
+		                    'articleId': null,
+		                    'content': '123',
+		                    'event': 'addArticle',
+		                    'kind': '经验分享',
+		                    'timestep': new Date().getTime(),
+		                    'random': myRandom,
+		                    'signure': getSignure({
+		                        'userId': 'ff723c50-6706-11e8-9953-acc9e830357',
+		                    	'name': '123',
+		                    	'articleId': null,
+		                    	'content': '123',
+		                    	'event': 'addArticle',
+		                    	'kind': '经验分享',
+		                    	'timestep': new Date().getTime(),
+		                    	'random': myRandom,
+		                    })
+		                },//请求数据：
+		                cache: false,    
+		                dataType:'json',
+		                //是否是同步请求：默认的是true
+		                async: false,
+		                //方法beforeSend，
+		                //用于在向服务器发送请求前添加一些处理函数。
+		                //这是一个ajax事件，在ajax请求开始之前就被触发，
+		                //通常允许用户修改XMLHttpRequest对象
+		                //（比如说设置附加的头部信息）
+		                success:function(data){           
+		                    try {
+		                        console.log(data.success);
+		                        console.log(data.articleId);
+		                        console.log(data.message);
+
+		                    }catch (err) {
+		                        console.log(err);
+		                    }   
+		                },    
+		                error:function(){
+		                    console.log("error");
+		                }
+		            })
+		        }) 
+				<!---->
+			</script>		
+	</body>
+	
+</html>
